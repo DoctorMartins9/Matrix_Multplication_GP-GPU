@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Compiling
+nvcc -std=c++11 $1
+
+# Populating csv
+echo $(cat $1 head -1) >> $1.csv
+for i in $(seq 3)
+do
+    ./a.out >> $1.csv
+    ./a.out >> $1.csv
+    ./a.out >> $1.csv
+done
+
+# Cleaning
+rm a.out
