@@ -1,10 +1,7 @@
 #define DIM 64
-char[] name = "MatrixMul";
-
 #include<stdio.h>
 #include<stdlib.h>
 #include <chrono>
-	
 
 //FUNZIONE PER STAMPARE UNA MATRICE
 void printMatrix(double *M) {
@@ -50,13 +47,12 @@ int main(){
     populateMatrix(B);
 	std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
 
-	// fai le tue cose sconcie Martini999 (Miticus97-)
 	MatrixMulHost(A, B, C);
 		
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	double tempo = std::chrono::duration_cast<std::chrono::duration<double> >(end - start).count();
 
-    printf("Tempo: %.3f\n", tempo);
+    printf("%f\n", tempo);
    // printMatrix(C);
 
 }
