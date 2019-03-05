@@ -1,6 +1,4 @@
 #define DIM 64
-char[] name = "TiledMatrixMul";
-
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 #include <math.h>

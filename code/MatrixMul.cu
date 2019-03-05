@@ -1,4 +1,4 @@
-#define DIM 64
+#define DIM 1024
 #include<stdio.h>
 #include<stdlib.h>
 #include <chrono>

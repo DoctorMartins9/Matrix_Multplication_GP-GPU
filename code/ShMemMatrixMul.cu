@@ -1,6 +1,4 @@
-#define DIM 64
-char[] name = "ShMemMatrixMul";
-
+#define DIM 4096
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 #include <math.h>
@@ -110,7 +108,7 @@ int main() {
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	double tempo = std::chrono::duration_cast<std::chrono::duration<double> >(end - start).count();
 
-	printf("%.3f\n",tempo);
+	printf("%f\n",tempo);
 
 	free(A);
 	free(B);

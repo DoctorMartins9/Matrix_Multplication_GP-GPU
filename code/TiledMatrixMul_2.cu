@@ -1,6 +1,4 @@
-#define DIM 64
-char[] name = "TiledMatrixMul_v2";
-
+#define DIM 4096
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 #include <math.h>
@@ -156,7 +154,7 @@ void LaunchKernel(double *M, double *N, double *P, int size) {
 
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	double tempo = std::chrono::duration_cast<std::chrono::duration<double> >(end - start).count();
-	printf("tempo sottostimato: %lf\n", tempo);
+	printf("%lf\n", tempo);
 
 	// Copio le sottomatrici nella matrixce finale
 	for(int i = 0; i < DIM; i++){
@@ -209,15 +207,12 @@ void MatrixMulHost(double *A, double *B, double *C) {
 int main() {
 	double *A = (double *)malloc(DIM * DIM * sizeof(double));
 	double *B = (double *)malloc(DIM * DIM * sizeof(double));
-	//double *C = (double *)malloc(DIM * DIM * sizeof(double));
+	double *C = (double *)malloc(DIM * DIM * sizeof(double));
 	double *C_H = (double *)malloc(DIM * DIM * sizeof(double));
 	populateMatrix(A);
 	populateMatrix(B);
 
-	std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
 	LaunchKernel(&A[0], &B[0], &C[0], DIM);
-	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	double tempo = std::chrono::duration_cast<std::chrono::duration<double> >(end - start).count();
-	printf("Tempo da campionare: %lf\n\n ",tempo);
+	
 }
 
