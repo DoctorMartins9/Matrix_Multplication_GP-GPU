@@ -1,0 +1,6 @@
+#!/bin/bash
+for i in 0 1 2 3 4
+do
+	sudo nvpmodel -m $i
+	nvcc --std=c++11 $1 -DCSVNAME=\"$1_$i.csv\" jetson_tx2_power.c -lpthread -g && ./a.out
+done
